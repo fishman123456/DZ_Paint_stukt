@@ -5,26 +5,35 @@
 //Добавить возможность вывода фамилий и номеров групп студентов,
 //имеющих оценки,равные только 4 или 5.
 // 21-06-2022 ушло 40 минут на задание
+// 28-06-2022 3 часа
 
 #include <iostream>
 using namespace std;
-struct stud {
-string soneme;
-int number;
-int academic[5];
-} worker;
+struct stud // создаем структуру
+{
+    string soneme{"first"};//фамилия и инициалы, пока string
+    int number{1};// номер группы
+    int academic[5]{0};// успеваемость массив из 5 элементов зануляем
+};
 
+void display (stud* obj1, int N)// выводим массив из обьектов структуры
+{
+    for (int i = 0; i < N; i++)
+    {
+        cout << obj1[i].soneme << "\t";
+        cout << obj1[i].number << "\t";
+        for (int j = 0; j < 5; j++)
+        {
+           cout << obj1[i].academic[j] << "\t";
+        }
+        cout << endl;
+    }
+}
 int main()
 {
-    struct stud x1;
-    x1.soneme ="ddfg" ;
-    x1.number = 3656;
-    for (int i = 0; i < 5; i++)
-    {
-        x1.academic[i] = i -5;
-    }
-    cout << "struct stud-\t" << "soneme_ " << x1.soneme
-        << "\tnumber_ " << x1.number << "\tacademic_\ " << x1.academic[4];
+    stud obj1[10]; // создаем массив из 10 обьектов структура
+    display(obj1,9);// выводим 10 обьектов структура
+    //delete [] obj1;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
